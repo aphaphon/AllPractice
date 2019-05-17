@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="user" (ngSubmit)=onSubmit()>
+
+    <ion-item>
+      <ion-label>FirstName</ion-label>
+      <ion-input type="text" formControlName="firstName" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>LastName</ion-label>
+      <ion-input type="text" formControlName="lastName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sex</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sex</ion-label>
+      <ion-select interface="action-sheet" formControlName="sex">
+        <ion-option [value]="1">1. ชาย</ion-option>
+        <ion-option [value]="2">2. หญิง</ion-option>
+        <ion-option [value]="3">3. อื่นๆ</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf ="user.get('sex').value == 3">
+        <ion-label>โปรดระบุ</ion-label>
+        <ion-input formControlName="otherSex"></ion-input>
+    </ion-item>
+
+    <!-- <div [ngSwitch]="user.get('sex').value">
+      <div *ngSwitchCase="3">
+        <ion-item>
+          <ion-label>โปรดระบุ</ion-label>
+          <ion-input formControlName="otherSex"></ion-input>
+         </ion-item>
+      </div>
+    </div> -->
+
+    <button ion-button full>Submit</button>
+  </form>
+</ion-content>

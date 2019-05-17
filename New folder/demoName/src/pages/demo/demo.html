@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>demo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label>Firstname: {{ form.get('firstName').value }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lastname: {{ form.get('lastName').value }}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="form.get('sex').value != 3">
+        <ion-label>Sex:</ion-label>
+        <ion-select disabled="true" formControlName="sex">
+          <ion-option [value]="1">ชาย</ion-option>
+          <ion-option [value]="2">หญิง</ion-option>
+          <ion-option [value]="3">อื่นๆ</ion-option>
+        </ion-select>
+      </ion-item>
+
+        <ion-item *ngIf="form.get('sex').value == 3">
+            <ion-label>Sex:</ion-label>
+          <ion-input formControlName="otherSex"></ion-input>
+        </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>
